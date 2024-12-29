@@ -1,0 +1,20 @@
+Mateo John
+
+This program can compiled with the "make" command. It will compile both oss.cpp and user_proc.cpp.
+user_proc is a child of oss, and should not be called directly. Oss has the following arguments:
+oss [-h] [-n proc] [-s simul] [-t timeToLaunchNewChild] [-f logfile]
+
+Normally it can be called as follows:
+./oss -h           -(This is the help command)
+./oss [-n proc] [-s simul] [-t timeToLaunchNewChild] [-f logfile]
+
+proc is the number of process you wish to call. simul is the number of processes that can run at the same time.
+timelimitForChildren is the random range in which each child will run. timeToLaunchNewChild is
+the interval in which to launch each program. logfile is the name of a file where you want the message output
+to go To track the progress of this program I used git and there should be a git log submited with this project.
+For this process the children processes are using requesting resources that are managed by oss. 995 out of 100
+the user process will request a resource, 1/1000 times it will release a resource, and 4/1000 it will terminate.
+this felt like a good ratio where most of time the children process will deadlock, especially the more processes
+you have running at the same time. I used a message que system to pass resource request. Deadlock decides to kill
+the process with the most resouces currently allocated towards it, since this is most likely to not require other
+resources to be terminated.
